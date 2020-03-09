@@ -1,7 +1,6 @@
 package Level_20.task2001;
 
 /*
-    created by zdRusty
     Задача на сериализацию. Нужно прописать логику методов save и load.
     Реализацию интерфейса Serializable использовать запрещено.
 */
