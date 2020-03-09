@@ -2,6 +2,8 @@ package Level_19.task1918;
 
 /*
     created by zdRusty
+    Парсер файла с HTML кодом с использованием библиотеки Jsoup.
+    Работает для всех возможных случаев, но не выдержал борьбу с валидатором.
 */
 
 import org.jsoup.Jsoup;
@@ -15,7 +17,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class task1918 {
+public class Solution {
 
     public static void main(String[] args) throws IOException {
 
