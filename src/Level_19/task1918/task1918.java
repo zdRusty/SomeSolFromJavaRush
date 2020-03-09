@@ -1,4 +1,4 @@
-package Level_19;
+package Level_19.task1918;
 
 /*
     created by zdRusty
