@@ -2,7 +2,7 @@ package Level_20.task2001;
 
 /*
     Задача на сериализацию. Нужно прописать логику методов save и load.
-    Реализацию интерфейса Serializable использовать запрещено.
+    Реализацию интерфейса Serializable и Externalizable использовать запрещено.
 */
 
 import java.io.*;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class Solution {
+public class Solution{
     public static void main(String[] args) {
         //путь к файлу outputStream/inputStream
         try {
