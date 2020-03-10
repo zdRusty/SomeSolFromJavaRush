@@ -49,7 +49,7 @@ public class Solution1 {
             //e.printStackTrace();
             System.out.println("Oops, something is wrong with my file");
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             System.out.println("Oops, something is wrong with the save/load method");
         }
     }
