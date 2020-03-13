@@ -1,0 +1,10 @@
+Условие:
+Класс Person должен сериализоваться с помощью интерфейса Externalizable.
+
+Требования:
+- в классе Solution.Person должен быть создан публичный конструктор без параметров
+- в классе Solution.Person должен быть создан конструктор с тремя параметрами
+(String firstName, String lastName, int age)
+- класс Solution.Person должен поддерживать интерфейс Externalizable
+- методы readExternal и writeExternal должны позволять корректно сериализовывать и десериализовывать
+объекты типа Person
