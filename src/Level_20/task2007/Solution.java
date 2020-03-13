@@ -6,7 +6,6 @@ import java.util.List;
 
 /*
     Как сериализовать JavaRush?
-    Должно быть простое решение. Вот только валидатор его теперь не принимает.
 */
 public class Solution {
     public static class JavaRush implements Serializable{
