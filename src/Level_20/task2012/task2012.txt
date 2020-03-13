@@ -1,0 +1,8 @@
+Условие:
+Класс OutputToConsole должен сериализоваться с помощью интерфейса Externalizable.
+
+Требования:
+- класс Solution.OutputToConsole должен поддерживать интерфейс Externalizable
+- класс OutputToConsole должен быть создан в классе Solution
+- класс OutputToConsole должен быть публичным
+- класс OutputToConsole должен быть статическим
