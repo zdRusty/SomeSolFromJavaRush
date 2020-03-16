@@ -17,8 +17,7 @@ public class Solution implements Serializable {
         /*
         Solution sol = new Solution(5);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        //String fileName = br.readLine();
-        String fileName = "C:\\Users\\BorderMan\\IdeaProjects\\JavaRushTest\\src\\test\\1.txt";
+        String fileName = br.readLine();
         br.close();
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName));
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
