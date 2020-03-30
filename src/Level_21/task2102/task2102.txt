@@ -1,0 +1,11 @@
+Условие:
+Реализовать логику метода isAllModifiersContainSpecificModifier, который проверяет, содержит ли переданный параметр
+allModifiers значение конкретного модификатора specificModifier.
+P.S. Перед выполнением задания ознакомься с классом Modifier и реализацией методов isPublic, isStatic и т.п.
+
+Требования:
+- метод isAllModifiersContainSpecificModifier должен быть статическим
+- метод isAllModifiersContainSpecificModifier должен возвращать значение типа boolean
+- метод isAllModifiersContainSpecificModifier должен принимать два параметра типа int
+- метод isAllModifiersContainSpecificModifier должен возвращать корректное значение в соответствии с условием
+задачи(true, если заданный модификатор присутствует в allModifiers, иначе false)
