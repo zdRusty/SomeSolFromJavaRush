@@ -80,12 +80,6 @@ public class Solution {
     }
 
     public static void main(String[] args) throws CloneNotSupportedException {
-
-        A a = new A(1,2);
-        B b = new B(a.getI(),a.getJ(),"3");
-        C c = new C(a.getI(),a.getJ(),b.getName());
-        System.out.println(b.clone());
-
     }
 
 }
