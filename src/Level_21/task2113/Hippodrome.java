@@ -1,6 +1,7 @@
 package Level_21.task2113;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Hippodrome {
@@ -23,6 +24,8 @@ public class Hippodrome {
         game.horses.add(h2);
         game.horses.add(h3);
         game.run();
+        game.getWinner();
+        game.printWinner();
     }
 
     public List<Horse> getHorses() {
@@ -50,5 +53,21 @@ public class Hippodrome {
         for(int i=0;i<10;i++){
             System.out.println();
         }
+    }
+
+    public Horse getWinner(){
+        double[] distance = new double[3];
+        for(int i=0;i<distance.length;i++){
+            distance[i]=getHorses().get(i).getDistance();
+        }
+        Arrays.sort(distance);
+        for(Horse x: getHorses()){
+            if(x.getDistance()==distance[distance.length-1]) return x;
+        }
+        return null;
+    }
+
+    public void printWinner(){
+        if(getWinner()!=null) System.out.println("Winner is "+getWinner().getName()+"!");
     }
 }
