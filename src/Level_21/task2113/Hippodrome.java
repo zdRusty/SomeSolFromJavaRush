@@ -7,6 +7,13 @@ public class Hippodrome {
     public static Hippodrome game;
     private List<Horse> horses = new ArrayList<>();
 
+    public Hippodrome(){
+    }
+
+    public Hippodrome(List<Horse> horses) {
+        this.horses = horses;
+    }
+
     public static void main(String[] args) {
         game = new Hippodrome();
         Horse h1 = new Horse("h1",3,0);
@@ -22,7 +29,15 @@ public class Hippodrome {
     }
 
     public void run(){
-
+        try {
+            for(int i=0;i<100;i++){
+                move();
+                print();
+                Thread.sleep(200);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void move(){
