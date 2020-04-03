@@ -20,4 +20,16 @@ public class Hippodrome {
     public List<Horse> getHorses() {
         return horses;
     }
+
+    public void run(){
+
+    }
+
+    public void move(){
+
+    }
+
+    public void print(){
+
+    }
 }
