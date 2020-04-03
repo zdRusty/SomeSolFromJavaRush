@@ -41,7 +41,7 @@ public class Hippodrome {
     }
 
     public void move(){
-
+        getHorses().forEach(Horse::move);
     }
 
     public void print(){
