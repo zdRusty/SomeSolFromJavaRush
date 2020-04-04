@@ -24,7 +24,6 @@ public class Hippodrome {
         game.horses.add(h2);
         game.horses.add(h3);
         game.run();
-        game.getWinner();
         game.printWinner();
     }
 
