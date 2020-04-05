@@ -1,0 +1,11 @@
+Условие:
+Метод getPartOfString должен возвращать подстроку между первой и второй табуляцией.
+На некорректные данные бросить исключение TooShortStringException.
+Класс TooShortStringException не менять.
+
+Требования:
+- класс TooShortStringException должен быть потомком класса Exception
+- метод getPartOfString должен принимать строку в качестве параметра
+- в случае, если строка, переданная в метод getPartOfString содержит менее 2 табуляций должно
+возникнуть исключение TooShortStringException
+- метод getPartOfString должен возвращать подстроку между первой и второй табуляцией
