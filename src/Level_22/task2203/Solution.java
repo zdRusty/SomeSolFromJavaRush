@@ -14,7 +14,6 @@ public class Solution {
             if (ch == '\t') count++;
         }
         if (count<2) throw new TooShortStringException();
-        else
         return strSplit[1];
     }
 
