@@ -1,6 +1,7 @@
 package Level_23.task12;
 
 public class Room {
+    public static Room game;
     private int width;
     private int height;
     private Snake snake;
@@ -13,6 +14,16 @@ public class Room {
     }
 
     public static void main(String[] args) {
+        Snake snake = new Snake(20,20);
+        game = new Room(400,400, snake);
+        snake.setDirection(SnakeDirection.DOWN);
+    }
+
+    public void run(){
+
+    }
+
+    public void print(){
 
     }
 
