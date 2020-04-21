@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 /**
- * §°§г§Я§а§У§Я§а§Ы §Ь§Э§С§г§г §б§в§а§Ф§в§С§Ю§Ю§н.
+ * Основной класс программы.
  */
 public class Room {
     private int width;

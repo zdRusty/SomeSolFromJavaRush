@@ -14,6 +14,18 @@ public class Snake {
         isAlive = true;
     }
 
+    public void checkBorders (SnakeSection head){
+        int[][] field = new int[Room.game.getHeight()][Room.game.getWidth()];
+        try{
+            field[head.getX()][head.getY()]='X';
+        } catch (IndexOutOfBoundsException e){
+            isAlive=false;
+        }
+    }
+    public void checkBody (SnakeSection head){
+        if (sections.contains(head)) isAlive = false;
+    }
+
     public List<SnakeSection> getSections() {
         return sections;
     }
@@ -52,4 +64,6 @@ public class Snake {
     public void move(int x, int y){
 
     }
+
+
 }
