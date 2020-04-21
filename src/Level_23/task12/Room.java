@@ -93,6 +93,34 @@ public class Room {
         //Рисуем все кусочки змеи
         //Рисуем мышь
         //Выводим все это на экран
+
+        char[][] field = new char[height][width];
+
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                if (x == snake.getSections().get(0).getX() && y == snake.getSections().get(0).getY())
+                    field[y][x] = 'X';
+                else if (x == mouse.getX() && y == mouse.getY())
+                    field[y][x] = '^';
+                else field[y][x] = '.';
+            }
+        }
+
+        for(int s=1;s<snake.getSections().size();s++) {
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    if (x == snake.getSections().get(s).getX() && y == snake.getSections().get(s).getY())
+                        field[y][x] = 'x';
+                }
+            }
+        }
+
+        for(char[] y: field){
+            for(char x: y){
+                System.out.print(x);
+            }
+            System.out.println();
+        }
     }
 
     public void eatMouse() {
