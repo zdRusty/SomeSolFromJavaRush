@@ -1,0 +1,12 @@
+Условие:
+В классе SuperUser метод getDescription должен учитывать страну и город, т.е. возвращать результат
+аналогичный следующему:
+My name is George. I'm from Seattle in the United States.
+
+Требования:
+- класс SuperUser должен быть приватным.
+- класс SuperUser должен содержать метод getDescription.
+- метод getDescription в классе SuperUser должен быть публичным.
+- метод getDescription в классе SuperUser должен возвращать строку учитывающую имя,страну и город пользователя
+форматированную согласно условию задачи.
+- метод getTrickyUser должен возвращать объект типа SuperUser.
