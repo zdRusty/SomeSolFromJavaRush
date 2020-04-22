@@ -1,0 +1,14 @@
+Условие:
+Внутри класса Solution:
+1) реализуйте private class TaskDataProvider используя Task и MockDB, цель которого — обновить поле tasks.
+2) реализуйте private class NameDataProvider используя String и MockDB, цель которого — обновить поле names.
+
+Требования:
+- класс TaskDataProvider должен быть создан внутри класса Solution и быть приватным
+- класс NameDataProvider должен быть создан внутри класса Solution и быть приватным
+- класс TaskDataProvider должен реализовывать интерфейс DbDataProvider с параметром типа Task
+- класс NameDataProvider должен реализовывать интерфейс DbDataProvider с параметром типа String
+- метод refreshAllData в классе TaskDataProvider должен сохранять в список tasks результат работы
+метода getFakeTasks класса MockDB
+- метод refreshAllData в классе NameDataProvider должен сохранять в список names результат работы
+метода getFakeNames класса MockDB
