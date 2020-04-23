@@ -1,0 +1,31 @@
+Условие:
+1. В пакете vo создайте public классы User, Location, Server, Subject, Subscription, которые наследуются от NamedItem
+2. В классе Solution для каждого класса создайте свой метод, который возвращает список экземпляров класса.
+Например, для класса User это будет — public List<User> getUsers()
+Для класса Location это будет — public List<Location> getLocations()
+3. Внутри каждого такого метода создайте анонимный класс от AbstractDbSelectExecutor и вызовите его нужный метод.
+
+Подсказка:
+тело метода должно начинаться так: return new AbstractDbSelectExecutor
+
+4. Пример вывода для User и Location:
+Id=5, name='User-5', description=Received by executing 'SELECT * FROM USER'
+Id=1, name='Location-1', description=Received by executing 'SELECT * FROM LOCATION'
+5. Проанализируйте пример вывода и сформируйте правильный query для всех классов.
+
+Требования:
+- в пакете vo должен быть создан public класс User, унаследованный от класса NamedItem
+- в пакете vo должен быть создан public класс Location, унаследованный от класса NamedItem
+- в пакете vo должен быть создан public класс Server, унаследованный от класса NamedItem
+- в пакете vo должен быть создан public класс Subject, унаследованный от класса NamedItem
+- в пакете vo должен быть создан public класс Subscription, унаследованный от класса NamedItem
+- в методе getUsers должен быть создан объект класса AbstractDbSelectExecutor с параметром типа User
+- в методе getUsers должен быть создан объект класса AbstractDbSelectExecutor с параметром типа Location
+- в методе getUsers должен быть создан объект класса AbstractDbSelectExecutor с параметром типа Server
+- в методе getUsers должен быть создан объект класса AbstractDbSelectExecutor с параметром типа Subject
+- в методе getUsers должен быть создан объект класса AbstractDbSelectExecutor с параметром типа Subscription
+- метод getUsers должен возвращать корректный список(в соответствии с условием задачи)
+- метод getLocations должен возвращать корректный список(в соответствии с условием задачи)
+- метод getServers должен возвращать корректный список(в соответствии с условием задачи)
+- метод getSubjects должен возвращать корректный список(в соответствии с условием задачи)
+- метод getSubscriptions должен возвращать корректный список(в соответствии с условием задачи)
