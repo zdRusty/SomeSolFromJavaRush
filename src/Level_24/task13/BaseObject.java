@@ -1,6 +1,6 @@
 package Level_24.task13;
 
-public class BaseObject {
+public abstract class BaseObject {
     private double x;
     private double y;
     private double radius;
@@ -9,6 +9,12 @@ public class BaseObject {
         this.x = x;
         this.y = y;
         this.radius = radius;
+    }
+
+    public abstract void draw(Canvas canvas);
+    public abstract void move();
+    public boolean isIntersec(BaseObject o){
+        return Math.sqrt(Math.pow(this.x-o.x,2)+Math.pow(this.y-o.y,2))<=Math.max(this.radius,o.radius);
     }
 
     public double getX() {
