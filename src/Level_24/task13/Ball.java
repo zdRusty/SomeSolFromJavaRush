@@ -1,4 +1,4 @@
 package Level_24.task13;
 
-public class Ball {
+public class Ball extends BaseObject{
 }
