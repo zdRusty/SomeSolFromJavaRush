@@ -24,7 +24,14 @@ public class Arkanoid {
     }
 
     public void move(){
+        ball.move();
+        stand.move();
+    }
 
+    public void draw(Canvas canvas){
+        ball.draw(canvas);
+        stand.draw(canvas);
+        bricks.forEach(x->x.draw(canvas));
     }
 
     public int getWidth() {
