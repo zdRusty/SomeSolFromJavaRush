@@ -1,8 +1,17 @@
 package Level_24.task13;
 
 public class Stand extends BaseObject{
+    private double speed;
+    private double direction;
+
     public Stand(double x, double y, double radius) {
         super(x, y, radius);
+    }
+
+    public Stand(double x, double y) {
+        super(x, y, 3);
+        this.speed = 1;
+        this.direction = 0;
     }
 
     @Override
@@ -13,5 +22,13 @@ public class Stand extends BaseObject{
     @Override
     public void move() {
 
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public double getDirection() {
+        return direction;
     }
 }
