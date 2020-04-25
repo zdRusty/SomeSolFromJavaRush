@@ -25,6 +25,19 @@ public class Canvas {
         }
     }
 
+    public void clear(){
+        matrix = new char[height+2][width+2];
+    }
+
+    public void print(){
+        for(char[] x: matrix){
+            for(char y: x){
+                System.out.print(y);
+            }
+            System.out.println();
+        }
+    }
+
     public int getWidth() {
         return width;
     }
