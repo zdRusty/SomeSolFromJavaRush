@@ -8,6 +8,7 @@ public class Arkanoid {
     private Ball ball;
     private Stand stand;
     private List<Brick> bricks;
+    private boolean isGameOver;
     public static Arkanoid game;
 
     public Arkanoid(int width, int height) {
@@ -32,6 +33,28 @@ public class Arkanoid {
         ball.draw(canvas);
         stand.draw(canvas);
         bricks.forEach(x->x.draw(canvas));
+    }
+
+    public void checkBricksBump(){
+        for(Brick x: bricks){
+            if(x.isIntersec(ball)){
+                double angle = Math.random()*360;
+                ball.setDirection(angle);
+                bricks.remove(x);
+                break;
+            }
+        }
+    }
+
+    public void checkStandBump(){
+        if(stand.isIntersec(ball)){
+            double angle = 90+20*(Math.random()-0.5);
+            ball.setDirection(angle);
+        }
+    }
+
+    public void checkEndGame(){
+        if(ball.getY()>game.height) isGameOver=true;
     }
 
     public int getWidth() {
