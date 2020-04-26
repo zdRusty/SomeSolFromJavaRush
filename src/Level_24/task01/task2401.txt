@@ -1,0 +1,14 @@
+Условие:
+1. Создай интерфейс-маркер SelfInterfaceMarker.
+2. Создай класс SelfInterfaceMarkerImpl, который реализует SelfInterfaceMarker.
+3. Добавь в SelfInterfaceMarkerImpl минимум 2 любых public метода.
+4. Создай исключение UnsupportedInterfaceMarkerException, унаследуй его от класса Exception.
+5. В методе testClass класса Util: если параметр == null, то выбросьте UnsupportedInterfaceMarkerException.
+
+Требования:
+- интерфейс-маркер SelfInterfaceMarker должен быть создан в отдельном файле
+- класс SelfInterfaceMarkerImpl должен быть создан в отдельном файле и реализовывать интерфейс SelfInterfaceMarker
+- в классе SelfInterfaceMarkerImpl должны существовать минимум два public метода
+- исключение UnsupportedInterfaceMarkerException должно быть создано в отдельном файле
+- метод testClass класса Util должен бросать исключение UnsupportedInterfaceMarkerException в случае, если полученный параметр равен null
+- в интерфейсе SelfInterfaceMarker не должны быть объявлены методы или декларированы константы
