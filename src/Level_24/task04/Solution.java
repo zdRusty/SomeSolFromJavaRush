@@ -5,12 +5,7 @@ package Level_24.task04;
 */
 public class Solution {
     public static void main(String[] args) {
-        Rectangle rectangle = new Rectangle(1, 2, 3, 4);
-        //System.out.println(getHeight(rectangle));
-        //System.out.println(getWidth(rectangle));
-        /////////////////////expected//////////////////
-        System.out.println(getHeight(rectangle.castToHasHeight()));
-        System.out.println(getWidth(rectangle.castToHasWidth()));
+
     }
 
     public static double getHeight(HasHeight rectangle) {
