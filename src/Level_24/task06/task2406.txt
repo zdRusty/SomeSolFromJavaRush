@@ -1,0 +1,11 @@
+Условие:
+Внутри класса Solution создай 2 внутренних public класса Apt3Bedroom, BigHall.
+Унаследуй их от Apartments и Hall.
+
+Требования:
+- класс Apt3Bedroom должен быть создан внутри класса Solution
+- класс BigHall должен быть создан внутри класса Solution
+- класс Apt3Bedroom должен быть публичным
+- класс BigHall должен быть публичным
+- класс Apt3Bedroom должен быть потомком класса Building.Apartments
+- класс BigHall должен быть потомком класса Building.Hall
