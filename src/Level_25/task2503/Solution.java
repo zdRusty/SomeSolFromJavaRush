@@ -18,14 +18,14 @@ public class Solution {
 
         Column.configureColumns(Column.Amount, Column.AccountNumber, Column.BankName);
 
-        for (test.Columnable columnable : Column.getVisibleColumns()) {
+        for (Columnable columnable : Column.getVisibleColumns()) {
             System.out.println(columnable.getColumnName());
         }
 
         System.out.println("--------------------");
         Column.AccountNumber.hide();
 
-        for (test.Columnable columnable : Column.getVisibleColumns()) {
+        for (Columnable columnable : Column.getVisibleColumns()) {
             System.out.println(columnable.getColumnName());
         }
     }
