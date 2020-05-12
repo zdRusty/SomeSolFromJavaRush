@@ -71,5 +71,13 @@ public class Human implements Alive{
         children.remove(human);
     }
 
+    public String getPosition(){
+        return "Человек";
+    }
+
+    public void printData() {
+        System.out.printf("%s: %s", getPosition(), name);
+    }
+
 }
 

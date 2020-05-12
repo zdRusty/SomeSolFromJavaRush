@@ -59,5 +59,10 @@ public class Student extends UniversityPerson {
     public double getAverageGrade() {
         return averageGrade;
     }
+
+    @Override
+    public String getPosition(){
+        return "Студент";
+    }
 }
 
