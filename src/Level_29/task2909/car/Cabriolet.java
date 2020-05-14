@@ -1,12 +1,12 @@
-package Level_25.task2909.car;
+package Level_29.task2909.car;
 
 public class Cabriolet extends Car{
     public Cabriolet(int numberOfPassengers) {
-        super(Car.CABRIOLET, numberOfPassengers);
+        super(CABRIOLET, numberOfPassengers);
     }
 
     @Override
     public int getMaxSpeed() {
-        return Car.MAX_CABRIOLET_SPEED;
+        return MAX_CABRIOLET_SPEED;
     }
 }

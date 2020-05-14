@@ -1,4 +1,4 @@
-package Level_25.task2909.human;
+package Level_29.task2909.human;
 
 public class Soldier extends Human{
     public Soldier(String name, int age) {
