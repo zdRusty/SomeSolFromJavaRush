@@ -38,5 +38,24 @@ public class Server {
         public Handler(Socket socket) {
             this.socket = socket;
         }
+
+        private String serverHandshake(Connection connection) throws IOException, ClassNotFoundException{
+            connection.send(new Message(MessageType.NAME_REQUEST));
+            while (true) {
+                Message userName = connection.receive();
+                if (userName.getType() == MessageType.USER_NAME) {
+                    if (!userName.getData().isEmpty()) {
+                        if(!connectionMap.containsKey(userName.getData())) {
+                            connectionMap.put(userName.getData(), connection);
+                            connection.send(new Message(MessageType.NAME_ACCEPTED));
+                            return userName.getData();
+                        }
+                        else connection.send(new Message(MessageType.NAME_REQUEST));
+                    }
+                    else connection.send(new Message(MessageType.NAME_REQUEST));
+                }
+                else connection.send(new Message(MessageType.NAME_REQUEST));
+            }
+        }
     }
 }
