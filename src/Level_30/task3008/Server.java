@@ -75,5 +75,30 @@ public class Server {
                 else ConsoleHelper.writeMessage("ERROR! It's not a text. Try again.");
             }
         }
+
+        public void run(){
+            String userName="";
+            try {
+                ConsoleHelper.writeMessage("Connection with "+ socket.getRemoteSocketAddress()+" accepted");
+                Connection connection = new Connection(socket);
+                userName = serverHandshake(connection);
+                sendBroadcastMessage(new Message(MessageType.USER_ADDED,userName));
+                notifyUsers(connection,userName);
+                serverMainLoop(connection,userName);
+            } catch (IOException | ClassNotFoundException e) {
+                ConsoleHelper.writeMessage("ERROR of exchange data with remote client");
+            } finally {
+                try {
+                    if(!userName.equals("")) {
+                        connectionMap.remove(userName);
+                        sendBroadcastMessage(new Message(MessageType.USER_REMOVED,userName));
+                    }
+                    socket.close();
+                    ConsoleHelper.writeMessage("Socket is closed.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }
