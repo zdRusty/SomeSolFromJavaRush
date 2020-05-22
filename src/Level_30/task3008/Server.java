@@ -65,5 +65,15 @@ public class Server {
                 }
             }
         }
+
+        private void serverMainLoop(Connection connection, String userName)throws IOException,ClassNotFoundException{
+            while (true) {
+                Message message = connection.receive();
+                if(message.getType()==(MessageType.TEXT)){
+                    sendBroadcastMessage(new Message(MessageType.TEXT, userName + ": " + message.getData()));
+                }
+                else ConsoleHelper.writeMessage("ERROR! It's not a text. Try again.");
+            }
+        }
     }
 }
