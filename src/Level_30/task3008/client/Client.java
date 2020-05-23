@@ -77,7 +77,9 @@ public class Client {
 
         public void run(){
             try {
-                Socket socket = new Socket(getServerAddress(),getServerPort());
+                String serverAddress = getServerAddress();
+                int serverPort = getServerPort();
+                Socket socket = new Socket(serverAddress,serverPort);
                 connection = new Connection(socket);
                 clientHandshake();
                 clientMainLoop();

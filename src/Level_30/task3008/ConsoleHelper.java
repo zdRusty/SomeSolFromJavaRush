@@ -15,12 +15,10 @@ public class ConsoleHelper {
         String str;
         try {
             str = br.readLine();
-            br.close();
         } catch (IOException e) {
             System.out.println("Произошла ошибка при попытке ввода текста. Попробуйте еще раз.");
-            str = readString();
+            return readString();
         }
-
         return str;
     }
 
