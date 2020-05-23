@@ -6,6 +6,7 @@ import Level_30.task3008.Message;
 import Level_30.task3008.MessageType;
 
 import java.io.IOException;
+import java.net.Socket;
 
 public class Client {
     protected Connection connection;
@@ -74,11 +75,21 @@ public class Client {
 
     public class SocketThread extends Thread{
 
+        public void run(){
+            try {
+                Socket socket = new Socket(getServerAddress(),getServerPort());
+                connection = new Connection(socket);
+                clientHandshake();
+                clientMainLoop();
+            } catch (IOException | ClassNotFoundException e) {
+                notifyConnectionStatusChanged(false);
+            }
+        }
+
         protected void clientHandshake() throws IOException,ClassNotFoundException{
             while (true){
                 Message message = connection.receive();
                 if(message.getType()==MessageType.NAME_REQUEST){
-//                    String userName = getUserName();
                     connection.send(new Message(MessageType.USER_NAME,getUserName()));
                 }
                 else if(message.getType()==MessageType.NAME_ACCEPTED){
