@@ -50,43 +50,21 @@ public class BotClient extends Client{
 
             ConsoleHelper.writeMessage(message);
 
-            if(message.contains(":")) {
+            if(message!=null&&message.contains(":")) {
                 String[] data = message.split(": ");
-                String userName = data[0];
-                String userText = data[1];
-                String response = "Информация для "+userName+": ";
-                switch (userText) {
-                    case ("дата"): {
-                        sendTextMessage(response + dataF.format(new GregorianCalendar().getTime()));
-                        break;
-                    }
-                    case ("день"): {
-                        sendTextMessage(response + dayF.format(new GregorianCalendar().getTime()));
-                        break;
-                    }
-                    case ("месяц"): {
-                        sendTextMessage(response + monthF.format(new GregorianCalendar().getTime()));
-                        break;
-                    }
-                    case ("год"): {
-                        sendTextMessage(response + yearF.format(new GregorianCalendar().getTime()));
-                        break;
-                    }
-                    case ("время"): {
-                        sendTextMessage(response + timeF.format(new GregorianCalendar().getTime()));
-                        break;
-                    }
-                    case ("час"): {
-                        sendTextMessage(response + hourF.format(new GregorianCalendar().getTime()));
-                        break;
-                    }
-                    case ("минуты"): {
-                        sendTextMessage(response + minutesF.format(new GregorianCalendar().getTime()));
-                        break;
-                    }
-                    case ("секунды"): {
-                        sendTextMessage(response + secondsF.format(new GregorianCalendar().getTime()));
-                        break;
+                if(data.length>1){
+                    String userName = data[0];
+                    String userText = data[1];
+                    String response = "Информация для "+userName+": ";
+                    switch (userText) {
+                        case ("дата"): sendTextMessage(response + dataF.format(new GregorianCalendar().getTime())); break;
+                        case ("день"): sendTextMessage(response + dayF.format(new GregorianCalendar().getTime())); break;
+                        case ("месяц"): sendTextMessage(response + monthF.format(new GregorianCalendar().getTime())); break;
+                        case ("год"): sendTextMessage(response + yearF.format(new GregorianCalendar().getTime())); break;
+                        case ("время"): sendTextMessage(response + timeF.format(new GregorianCalendar().getTime())); break;
+                        case ("час"): sendTextMessage(response + hourF.format(new GregorianCalendar().getTime())); break;
+                        case ("минуты"): sendTextMessage(response + minutesF.format(new GregorianCalendar().getTime())); break;
+                        case ("секунды"): sendTextMessage(response + secondsF.format(new GregorianCalendar().getTime())); break;
                     }
                 }
             }
