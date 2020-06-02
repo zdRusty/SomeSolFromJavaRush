@@ -1,5 +1,7 @@
 package Level_31.task3110;
 
+import Level_31.task3110.command.ExitCommand;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.nio.file.Path;
@@ -16,6 +18,7 @@ public class Archiver {
             System.out.println("Введите путь к файлу, который будет архивирован");
             Path filePath = Paths.get(br.readLine());
             zipArchive.createZip(filePath);
+            new ExitCommand().execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
