@@ -47,8 +47,7 @@ public class Solution {
         public final String namePrefix;
 
         public AmigoThreadFactory(){
-            SecurityManager s = new SecurityManager();
-            group = (s!=null)? s.getThreadGroup() : Thread.currentThread().getThreadGroup();
+            group = Thread.currentThread().getThreadGroup();
             namePrefix = group.getName()+"-pool-" + a.getAndIncrement()+"-thread-";
         }
 
