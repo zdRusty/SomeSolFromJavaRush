@@ -12,7 +12,7 @@ public class Solution {
     public static void main(String[] args) throws InterruptedException {
         ExecutorService service = Executors.newFixedThreadPool(5);
         for(int i=0;i<10;i++){
-            int count = i;
+            int count = i+1;
             service.submit(new Runnable() {
                 @Override
                 public void run() {
