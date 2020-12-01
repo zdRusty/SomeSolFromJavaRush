@@ -1,0 +1,5 @@
+все работает
+java -jar DBTest.jar
+java -jar BotClient.jar
+java -jar Client.jar
+java -jar Server.jar
