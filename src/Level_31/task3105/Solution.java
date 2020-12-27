@@ -18,7 +18,7 @@ public class Solution {
     public static void main(String[] args) {
 
         String fileName = args[0];
-        File newFile = new File(fileName);
+        File addingFile = new File(fileName);
         Map<String, ByteArrayOutputStream> map = new HashMap<>();
 
         try (ZipInputStream zis = new ZipInputStream(new FileInputStream(args[1]))) {
@@ -38,20 +38,20 @@ public class Solution {
 
         String searchResult = "";
         for (Map.Entry<String, ByteArrayOutputStream> x : map.entrySet()) {
-            if (x.getKey().substring(x.getKey().lastIndexOf("/") + 1).equals(newFile.getName())) {
+            if (x.getKey().substring(x.getKey().lastIndexOf("/") + 1).equals(addingFile.getName())) {
                 searchResult = x.getKey();
             }
         }
 
         try (ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(args[1]))) {
             if (searchResult.equals("")) {
-                zos.putNextEntry(new ZipEntry("new/" + newFile.getName()));
+                zos.putNextEntry(new ZipEntry("new/" + addingFile.getName()));
             } else {
                 zos.putNextEntry(new ZipEntry(searchResult));
             }
             Files.copy(Paths.get(fileName), zos);
             for (Map.Entry<String, ByteArrayOutputStream> x : map.entrySet()) {
-                if (x.getKey().substring(x.getKey().lastIndexOf("/") + 1).equals(newFile.getName())) {
+                if (x.getKey().substring(x.getKey().lastIndexOf("/") + 1).equals(addingFile.getName())) {
                     zos.closeEntry();
                 } else {
                     zos.putNextEntry(new ZipEntry(x.getKey()));
