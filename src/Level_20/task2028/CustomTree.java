@@ -9,7 +9,7 @@ import java.util.List;
 Построй дерево(1)
 */
 
-public class CustomTree extends AbstractList<String> implements Serializable,Cloneable {
+public class CustomTree extends AbstractList<String> implements Serializable, Cloneable {
 
     @Override
     public String get(int index) {
@@ -49,5 +49,21 @@ public class CustomTree extends AbstractList<String> implements Serializable,Clo
     @Override
     protected void removeRange(int fromIndex, int toIndex) {
         throw new UnsupportedOperationException();
+    }
+
+    static class Entry<T> implements Serializable {
+        String elementName;
+        boolean availableToAddLeftChildren, availableToAddRightChildren;
+        Entry<T> parent, leftChild, rightChild;
+
+        public Entry(String elementName) {
+            this.elementName = elementName;
+            availableToAddLeftChildren = true;
+            availableToAddRightChildren = true;
+        }
+
+       public boolean isAvailableToAddChildren(){
+            return availableToAddLeftChildren||availableToAddRightChildren;
+       }
     }
 }
