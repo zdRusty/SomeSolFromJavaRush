@@ -1,15 +1,21 @@
 package Level_20.task2028;
 
 import java.io.Serializable;
-import java.util.AbstractList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /*
 Построй дерево(1)
 */
 
 public class CustomTree extends AbstractList<String> implements Serializable, Cloneable {
+
+    Entry<String> root;
+
+    int count = 0;
+
+    public CustomTree() {
+        root = new Entry<String>("0");
+    }
 
     @Override
     public String get(int index) {
@@ -18,7 +24,7 @@ public class CustomTree extends AbstractList<String> implements Serializable, Cl
 
     @Override
     public int size() {
-        return 0;
+        return count;
     }
 
     @Override
@@ -51,7 +57,52 @@ public class CustomTree extends AbstractList<String> implements Serializable, Cl
         throw new UnsupportedOperationException();
     }
 
+
+    @Override
+    public boolean add(String elementName) {
+        Entry<String> element = new Entry<>(elementName);
+        ArrayDeque<Entry<String>> queue = new ArrayDeque<>();
+        queue.addFirst(root);
+
+        while (!queue.isEmpty()) {
+            Entry<String> next = queue.pollFirst();
+            if (next.isAvailableToAddChildren()) {
+                if (next.availableToAddLeftChildren) {
+                    next.leftChild = element;
+                    next.availableToAddLeftChildren = false;
+                } else {
+                    next.rightChild = element;
+                    next.availableToAddRightChildren = false;
+                }
+                element.parent = next;
+                count++;
+                return true;
+            } else {
+                queue.addLast(next.leftChild);
+                queue.addLast(next.rightChild);
+            }
+        }
+        return true;
+    }
+
+    public String getParent(String elementName) {
+
+        ArrayDeque<Entry<String>> queue = new ArrayDeque<>();
+        queue.addFirst(root);
+        while (!queue.isEmpty()) {
+            Entry<String> next = queue.pollFirst();
+            if(next.elementName.equals(elementName)){
+                return next.parent.elementName;
+            }
+            if(!next.availableToAddLeftChildren) queue.addLast(next.leftChild);
+            if(!next.availableToAddRightChildren) queue.addLast(next.rightChild);
+        }
+
+        return null;
+    }
+
     static class Entry<T> implements Serializable {
+
         String elementName;
         boolean availableToAddLeftChildren, availableToAddRightChildren;
         Entry<T> parent, leftChild, rightChild;
@@ -62,8 +113,8 @@ public class CustomTree extends AbstractList<String> implements Serializable, Cl
             availableToAddRightChildren = true;
         }
 
-       public boolean isAvailableToAddChildren(){
-            return availableToAddLeftChildren||availableToAddRightChildren;
-       }
+        public boolean isAvailableToAddChildren() {
+            return availableToAddLeftChildren || availableToAddRightChildren;
+        }
     }
 }
