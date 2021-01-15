@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /*
-Построй дерево(1)
+Построй дерево(5)
 */
 
 public class CustomTree extends AbstractList<String> implements Serializable, Cloneable {
@@ -64,6 +64,10 @@ public class CustomTree extends AbstractList<String> implements Serializable, Cl
         ArrayDeque<Entry<String>> queue = new ArrayDeque<>();
         queue.addFirst(root);
 
+        if (!isAvailableToAdd()) {
+            recoverAbleToAdd();
+        }
+
         while (!queue.isEmpty()) {
             Entry<String> next = queue.pollFirst();
             if (next.isAvailableToAddChildren()) {
@@ -78,27 +82,100 @@ public class CustomTree extends AbstractList<String> implements Serializable, Cl
                 count++;
                 return true;
             } else {
-                queue.addLast(next.leftChild);
-                queue.addLast(next.rightChild);
+                if (next.leftChild != null) queue.addLast(next.leftChild);
+                if (next.rightChild != null) queue.addLast(next.rightChild);
             }
         }
-        return true;
+        return false;
     }
 
     public String getParent(String elementName) {
-
         ArrayDeque<Entry<String>> queue = new ArrayDeque<>();
         queue.addFirst(root);
         while (!queue.isEmpty()) {
             Entry<String> next = queue.pollFirst();
-            if(next.elementName.equals(elementName)){
+            if (next.elementName.equals(elementName)) {
                 return next.parent.elementName;
             }
-            if(!next.availableToAddLeftChildren) queue.addLast(next.leftChild);
-            if(!next.availableToAddRightChildren) queue.addLast(next.rightChild);
+            if (!next.availableToAddLeftChildren && next.leftChild != null) queue.addLast(next.leftChild);
+            if (!next.availableToAddRightChildren && next.rightChild != null) queue.addLast(next.rightChild);
         }
-
         return null;
+    }
+
+    @Override
+    public boolean remove(Object o) {
+        try {
+            String elementName = (String) o;
+            ArrayDeque<Entry<String>> queue = new ArrayDeque<>();
+            queue.addFirst(root);
+
+            while (!queue.isEmpty()) {
+                Entry<String> next = queue.pollFirst();
+                if (next.elementName.equals(elementName)) {
+
+                    if (next.parent.leftChild != null && next.parent.leftChild.elementName.equals(elementName)) {
+                        next.parent.leftChild = null;
+
+                    }
+                    if (next.parent.rightChild != null && next.parent.rightChild.elementName.equals(elementName)) {
+                        next.parent.rightChild = null;
+                    }
+                    count = count - childrenCount(next);
+                    return true;
+                }
+                if (!next.availableToAddLeftChildren && next.leftChild != null) queue.addLast(next.leftChild);
+                if (!next.availableToAddRightChildren && next.rightChild != null) queue.addLast(next.rightChild);
+            }
+
+        } catch (ClassCastException e) {
+            throw new UnsupportedOperationException();
+        }
+        return false;
+    }
+
+    private int childrenCount(Entry<String> element) {
+
+        int numOfChildren = 0;
+        ArrayDeque<Entry<String>> queue = new ArrayDeque<>();
+        queue.addFirst(element);
+        while (!queue.isEmpty()) {
+            Entry<String> next = queue.pollFirst();
+            numOfChildren++;
+            if (!next.availableToAddLeftChildren && next.leftChild != null) queue.addLast(next.leftChild);
+            if (!next.availableToAddRightChildren && next.rightChild != null) queue.addLast(next.rightChild);
+        }
+        return numOfChildren;
+    }
+
+    private boolean isAvailableToAdd() {
+        ArrayDeque<Entry<String>> queue = new ArrayDeque<>();
+        queue.addFirst(root);
+        while (!queue.isEmpty()) {
+            Entry<String> next = queue.pollFirst();
+            if (next.isAvailableToAddChildren()) {
+                return true;
+            }
+            if (!next.availableToAddLeftChildren && next.leftChild != null) queue.addLast(next.leftChild);
+            if (!next.availableToAddRightChildren && next.rightChild != null) queue.addLast(next.rightChild);
+        }
+        return false;
+    }
+
+    private void recoverAbleToAdd() {
+        ArrayDeque<Entry<String>> queue = new ArrayDeque<>();
+        queue.addFirst(root);
+        while (!queue.isEmpty()) {
+            Entry<String> next = queue.pollFirst();
+            if (next.leftChild == null) {
+                next.availableToAddLeftChildren = true;
+            }
+            if (next.rightChild == null) {
+                next.availableToAddRightChildren = true;
+            }
+            if (!next.availableToAddLeftChildren && next.leftChild != null) queue.addLast(next.leftChild);
+            if (!next.availableToAddRightChildren && next.rightChild != null) queue.addLast(next.rightChild);
+        }
     }
 
     static class Entry<T> implements Serializable {
