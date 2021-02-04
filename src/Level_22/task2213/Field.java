@@ -24,7 +24,15 @@ public class Field {
         return matrix;
     }
 
-    public void print(){}
+    public void print(){
+        for(int[] y: matrix){
+            for(int x: y){
+                if (x==0) System.out.print(".");
+                else System.out.print("X");
+            }
+            System.out.println();
+        }
+    }
     public void removeFullLines(){}
     public Integer getValue(int x, int y){
         return null;
