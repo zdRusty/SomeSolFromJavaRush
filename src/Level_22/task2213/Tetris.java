@@ -16,4 +16,12 @@ public class Tetris {
     public static void main(String[] args) {
 
     }
+
+    public void run(){
+
+    }
+
+    public void step(){
+
+    }
 }
