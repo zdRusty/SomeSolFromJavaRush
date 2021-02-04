@@ -79,14 +79,19 @@ public class Tetris {
      * Один шаг игры
      */
     public void step() {
+        figure.down();
+        if (!figure.isCurrentPositionAvailable()){
+            figure.up();
+            figure.landed();
+            field.removeFullLines();
+            figure = FigureFactory.createRandomFigure(field.getWidth() / 2, 0);
+        }
         //опускам фигурку вниз
-
         //если разместить фигурку на текущем месте невозможно:
         //поднимаем обратно
         //приземляем
         //удаляем заполненные линии
         //создаем новую фигурку
-
     }
 
     /**

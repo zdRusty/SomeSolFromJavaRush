@@ -1,8 +1,6 @@
 package Level_22.task2213;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 /**
  * Класс Field описывает "поле клеток" игры Тетрис
@@ -107,25 +105,28 @@ public class Field {
      * Удаляем заполненные линии
      */
     public void removeFullLines() {
-
-        List<int[]> temp = Arrays.asList(matrix);
-        List<int[]> result = temp.stream().filter(x -> !isLineFull(x)).collect(Collectors.toList());
-        while (result.size() < temp.size()) {
-            result.add(0, new int[width]);
-        }
-        matrix = result.toArray(new int[height][width]);
-    }
-
-    private boolean isLineFull(int[] line) {
-        boolean isFull = false;
-        for (int x : line) {
-            if (x == 0) return false;
-        }
-        return true;
-    }
-        //Например так:
         //Создаем список для хранения линий
+        ArrayList<int[]> lines = new ArrayList<int[]>();
+
         //Копируем все неполные линии в список.
+        for (int i = 0; i < height; i++) {
+            //подсчитываем количество единиц в строке - просто суммируем все ее значения
+            int count = 0;
+            for (int j = 0; j < width; j++) {
+                count += matrix[i][j];
+            }
+
+            //Если сумма строки не равна ее ширине - добавляем в список
+            if (count != width)
+                lines.add(matrix[i]);
+        }
+
         //Добавляем недостающие строки в начало списка.
+        while (lines.size() < height) {
+            lines.add(0, new int[width]);
+        }
+
         //Преобразуем список обратно в матрицу
+        matrix = lines.toArray(new int[height][width]);
+    }
 }
