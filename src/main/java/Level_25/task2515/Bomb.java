@@ -1,16 +1,27 @@
 package Level_25.task2515;
 
-public class Bomb extends BaseObject{
 
+/**
+ * Класс для бомбы.
+ */
+public class Bomb extends BaseObject {
     public Bomb(double x, double y) {
         super(x, y, 1);
     }
 
-    public void move() {
-        this.setY(this.getY()+1);
+    /**
+     * Отрисовываем себя на холсте.
+     */
+    @Override
+    public void draw(Canvas canvas) {
+        canvas.setPoint(x, y, 'B');
     }
 
-    public void draw(Canvas canvas) {
-        canvas.setPoint(this.getX(),this.getY(),'B');
+    /**
+     * Двигаем себя вниз на один ход.
+     */
+    @Override
+    public void move() {
+        y++;
     }
 }
