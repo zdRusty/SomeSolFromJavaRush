@@ -3,6 +3,7 @@ package Level_25.task2515;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Главный класс игры - Космос (Space)
@@ -105,7 +106,7 @@ public class Space {
      * Создаем новый НЛО. 1 раз на 10 вызовов.
      */
     public void createUfo() {
-        //тут нужно создать новый НЛО.
+        if(ufos.isEmpty()) ufos.add(new Ufo(width/2,0));//тут нужно создать новый НЛО.
     }
 
     /**
@@ -114,7 +115,13 @@ public class Space {
      * б) падение ниже края игрового поля (бомба умирает)
      */
     public void checkBombs() {
-        //тут нужно проверить все возможные столкновения для каждой бомбы.
+        for(Bomb b: bombs){
+            if(b.isIntersect(ship)){
+                b.die();
+                ship.die();
+            }
+            if(b.getY()>height) b.die();
+        }//тут нужно проверить все возможные столкновения для каждой бомбы.
     }
 
     /**
@@ -123,13 +130,25 @@ public class Space {
      * б) вылет выше края игрового поля (ракета умирает)
      */
     public void checkRockets() {
-        //тут нужно проверить все возможные столкновения для каждой ракеты.
+        for(Rocket r: rockets){
+            for(Ufo u: ufos){
+                if(r.isIntersect(u)){
+                    r.die();
+                    u.die();
+                }
+                if(r.getY()<0) r.die();
+            }
+        }
+            //тут нужно проверить все возможные столкновения для каждой ракеты.
     }
 
     /**
      * Удаляем умершие объекты (бомбы, ракеты, НЛО) из списков
      */
     public void removeDead() {
+        bombs = bombs.stream().filter(BaseObject::isAlive).collect(Collectors.toList());
+        ufos = ufos.stream().filter(BaseObject::isAlive).collect(Collectors.toList());
+        rockets = rockets.stream().filter(BaseObject::isAlive).collect(Collectors.toList());
         //тут нужно удалить все умершие объекты из списков (кроме космического корабля)
     }
 
