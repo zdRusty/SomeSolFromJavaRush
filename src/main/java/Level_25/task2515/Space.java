@@ -12,6 +12,8 @@ public class Space {
     private List<Rocket> rockets = new ArrayList<>();
     private List<Bomb> bombs = new ArrayList<>();
 
+    public static Space game;
+
     public int getWidth() {
         return width;
     }
