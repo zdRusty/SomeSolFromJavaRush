@@ -1,16 +1,24 @@
 package Level_37.task3707;
 
 import java.io.Serializable;
-import java.util.AbstractSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.Spliterator;
+import java.util.*;
 import java.util.function.Consumer;
-import java.util.function.IntFunction;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class AmigoSet<E> extends AbstractSet<E> implements Serializable, Cloneable, Set<E> {
+
+    private static final Object PRESENT = new Object();
+    private transient HashMap<E,Object> map;
+
+    public AmigoSet() {
+        map = new HashMap<>();
+    }
+
+    public AmigoSet(Collection<? extends E> collection) {
+        map = new HashMap<>(Math.max(16,(int)(collection.size()/.75f)+1));
+        this.addAll(collection);
+    }
 
     @Override
     public Iterator<E> iterator() {
@@ -20,11 +28,6 @@ public class AmigoSet<E> extends AbstractSet<E> implements Serializable, Cloneab
     @Override
     public void forEach(Consumer<? super E> action) {
 
-    }
-
-//    @Override
-    public <T> T[] toArray(IntFunction<T[]> generator) {
-        return null;
     }
 
     @Override
@@ -50,5 +53,10 @@ public class AmigoSet<E> extends AbstractSet<E> implements Serializable, Cloneab
     @Override
     public int size() {
         return 0;
+    }
+
+    @Override
+    public boolean add(E e) {
+        return map.put(e,PRESENT)==null;
     }
 }
