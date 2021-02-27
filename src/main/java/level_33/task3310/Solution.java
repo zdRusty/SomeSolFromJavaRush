@@ -1,19 +1,18 @@
 package level_33.task3310;
 
+import level_33.task3310.strategy.FileStorageStrategy;
 import level_33.task3310.strategy.HashMapStorageStrategy;
 import level_33.task3310.strategy.OurHashMapStorageStrategy;
 import level_33.task3310.strategy.StorageStrategy;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Solution {
     public static void main(String[] args) {
-         StorageStrategy strategy = new HashMapStorageStrategy();
-         StorageStrategy our = new OurHashMapStorageStrategy();
-         testStrategy(strategy,20000);
-         testStrategy(our,20000);
+
+        List<StorageStrategy> strategies = new ArrayList<>
+                (Arrays.asList(new HashMapStorageStrategy(), new OurHashMapStorageStrategy(), new FileStorageStrategy()));
+        strategies.forEach(x->Solution.testStrategy(x,100));
     }
 
     public static Set<Long> getIds(Shortener shortener, Set<String> strings){
