@@ -11,7 +11,9 @@ public class Solution {
                 new HashMapStorageStrategy(),
                 new OurHashMapStorageStrategy(),
 //                new FileStorageStrategy(),
-                new OurHashBiMapStorageStrategy()));
+                new OurHashBiMapStorageStrategy(),
+                new HashBiMapStorageStrategy()
+        ));
         strategies.forEach(x->Solution.testStrategy(x,10000));
     }
 
