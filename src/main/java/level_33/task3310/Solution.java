@@ -12,7 +12,8 @@ public class Solution {
                 new OurHashMapStorageStrategy(),
 //                new FileStorageStrategy(),
                 new OurHashBiMapStorageStrategy(),
-                new HashBiMapStorageStrategy()
+                new HashBiMapStorageStrategy(),
+                new DualHashBidiMapStorageStrategy()
         ));
         strategies.forEach(x->Solution.testStrategy(x,10000));
     }
