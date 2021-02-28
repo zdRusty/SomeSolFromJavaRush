@@ -7,15 +7,22 @@ import java.util.*;
 public class Solution {
     public static void main(String[] args) {
 
-        List<StorageStrategy> strategies = new ArrayList<>(Arrays.asList(
-                new HashMapStorageStrategy(),
-                new OurHashMapStorageStrategy(),
-//                new FileStorageStrategy(),
-                new OurHashBiMapStorageStrategy(),
-                new HashBiMapStorageStrategy(),
-                new DualHashBidiMapStorageStrategy()
-        ));
-        strategies.forEach(x->Solution.testStrategy(x,10000));
+//        List<StorageStrategy> strategies = new ArrayList<>(Arrays.asList(
+////                new HashMapStorageStrategy(),
+////                new OurHashMapStorageStrategy(),
+////                new FileStorageStrategy(),
+////                new OurHashBiMapStorageStrategy(),
+////                new HashBiMapStorageStrategy(),
+//                new DualHashBidiMapStorageStrategy()
+//        ));
+//        strategies.forEach(x->Solution.testStrategy(x,10));
+        StorageStrategy dbStrategy = new DataBaseStrategy();
+
+        Solution.testStrategy(dbStrategy,10);
+        for(DBBucket x: ((DataBaseStrategy)dbStrategy).table){
+            x.remove();
+        }
+
     }
 
     public static Set<Long> getIds(Shortener shortener, Set<String> strings){

@@ -22,6 +22,7 @@ public class FileStorageStrategy implements StorageStrategy{
         int h;
         return (k == null) ? 0 : (h = k.hashCode()) ^ (h >>> 16);
     }
+
     public int indexFor(int hash, int length){
         return hash & (length-1);
     }
@@ -38,12 +39,14 @@ public class FileStorageStrategy implements StorageStrategy{
         }
         return null;
     }
+
     public void resize(int newCapacity){
         FileBucket[] newTable = new FileBucket[newCapacity];
         transfer(newTable);
         table = newTable;
         setBucketSizeLimit(2*bucketSizeLimit);
     }
+
     public void transfer(FileBucket[] newTable){
         FileBucket[] src = table;
         int newCapacity = newTable.length;
